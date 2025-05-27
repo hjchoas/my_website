@@ -1,0 +1,399 @@
+// Enhanced website functionality
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Website loaded successfully!');
+    
+    // Ensure body is scrollable on load
+    document.body.classList.remove('no-scroll');
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    }
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                }
+            }
+        });
+    });
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    document.querySelectorAll('.service-item, .blog-item, .video-feature, .footer-column').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Add active class to current navigation link
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navItems.forEach(item => {
+            item.classList.remove('active-link');
+            if (item.getAttribute('href').slice(1) === current) {
+                item.classList.add('active-link');
+            }
+        });
+    });
+    
+    // Add parallax effect to hero section
+    const heroSection = document.querySelector('.hero');
+    
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset;
+        if (heroSection) {
+            heroSection.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        }
+    });
+
+    // Neon Glow Effect on Hover
+    const neonElements = document.querySelectorAll('.cta-button, .logo a, .nav-links a');
+    neonElements.forEach(element => {
+        element.addEventListener('mouseover', () => {
+            element.style.textShadow = '0 0 10px rgba(0, 255, 157, 0.8), 0 0 20px rgba(0, 255, 157, 0.4)';
+        });
+        element.addEventListener('mouseout', () => {
+            element.style.textShadow = '';
+        });
+    });
+
+    // Market Item Hover Effects
+    const marketItems = document.querySelectorAll('.market-item');
+    marketItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            item.style.transform = 'translateY(-10px)';
+            item.style.boxShadow = '0 0 20px rgba(0, 255, 157, 0.4)';
+        });
+        item.addEventListener('mouseout', () => {
+            item.style.transform = '';
+            item.style.boxShadow = '';
+        });
+    });
+
+    // Price Animation
+    const prices = document.querySelectorAll('.price');
+    prices.forEach(price => {
+        price.addEventListener('mouseover', () => {
+            price.style.color = '#00ffff';
+            price.style.transform = 'scale(1.1)';
+        });
+        price.addEventListener('mouseout', () => {
+            price.style.color = '';
+            price.style.transform = '';
+        });
+    });
+
+    // Game Icon Animation
+    const gameIcons = document.querySelectorAll('.game-icon');
+    gameIcons.forEach(icon => {
+        icon.addEventListener('mouseover', () => {
+            icon.style.transform = 'rotate(360deg)';
+            icon.style.transition = 'transform 0.5s ease';
+        });
+        icon.addEventListener('mouseout', () => {
+            icon.style.transform = '';
+        });
+    });
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.service-item, .blog-item, .guide-step, .market-item');
+    
+    const revealOnScroll = () => {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    // Initial setup for reveal elements
+    revealElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Run reveal on scroll
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Run once on load
+
+    // Add particle effect to hero section
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: rgba(0, 255, 157, ${Math.random() * 0.5});
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                pointer-events: none;
+                animation: float ${5 + Math.random() * 10}s linear infinite;
+            `;
+            hero.appendChild(particle);
+        }
+    }
+
+    // Add floating animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Add typing effect to hero title
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        typeWriter();
+    }
+
+    // Market Section Functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const serverSelect = document.querySelector('.server-select');
+    const sortSelect = document.querySelector('.sort-select');
+    const listingItems = document.querySelectorAll('.listing-item');
+
+    // Tab switching
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            // Here you would typically load different game data
+            // For now, we'll just update the currency amounts
+            updateListings(button.textContent);
+        });
+    });
+
+    // Server filtering
+    serverSelect.addEventListener('change', () => {
+        // Here you would typically filter listings by server
+        console.log('Server selected:', serverSelect.value);
+    });
+
+    // Sorting
+    sortSelect.addEventListener('change', () => {
+        const listings = Array.from(listingItems);
+        const sortBy = sortSelect.value;
+
+        listings.sort((a, b) => {
+            const priceA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
+            const priceB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
+            const ratingA = parseFloat(a.querySelector('.rating').textContent.split(' ')[0]);
+            const ratingB = parseFloat(b.querySelector('.rating').textContent.split(' ')[0]);
+            const deliveryA = parseInt(a.querySelector('.delivery-time').textContent.split('-')[0]);
+            const deliveryB = parseInt(b.querySelector('.delivery-time').textContent.split('-')[0]);
+
+            switch(sortBy) {
+                case 'Price: Low to High':
+                    return priceA - priceB;
+                case 'Price: High to Low':
+                    return priceB - priceA;
+                case 'Seller Rating':
+                    return ratingB - ratingA;
+                case 'Delivery Time':
+                    return deliveryA - deliveryB;
+                default:
+                    return 0;
+            }
+        });
+
+        const marketListings = document.querySelector('.market-listings');
+        listings.forEach(listing => marketListings.appendChild(listing));
+    });
+
+    // Update listings based on selected game
+    function updateListings(game) {
+        const amounts = {
+            'World of Warcraft': ['100,000 Gold', '500,000 Gold', '1,000,000 Gold'],
+            'New World': ['100,000 Coins', '500,000 Coins', '1,000,000 Coins'],
+            'Path of Exile': ['100 Exalted', '500 Exalted', '1,000 Exalted']
+        };
+
+        const prices = {
+            'World of Warcraft': ['$50.00', '$230.00', '$450.00'],
+            'New World': ['$45.00', '$210.00', '$400.00'],
+            'Path of Exile': ['$60.00', '$280.00', '$550.00']
+        };
+
+        const pricePerUnit = {
+            'World of Warcraft': ['$0.50/1K', '$0.46/1K', '$0.45/1K'],
+            'New World': ['$0.45/1K', '$0.42/1K', '$0.40/1K'],
+            'Path of Exile': ['$0.60/1K', '$0.56/1K', '$0.55/1K']
+        };
+
+        listingItems.forEach((item, index) => {
+            item.querySelector('.currency-amount').textContent = amounts[game][index];
+            item.querySelector('.price').textContent = prices[game][index];
+            item.querySelector('.price-per-unit').textContent = pricePerUnit[game][index];
+        });
+    }
+
+    // Buy button functionality
+    document.querySelectorAll('.buy-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const listing = button.closest('.listing-item');
+            const amount = listing.querySelector('.currency-amount').textContent;
+            const price = listing.querySelector('.price').textContent;
+            const seller = listing.querySelector('.seller-name').textContent;
+            
+            // Here you would typically open a checkout modal
+            console.log(`Buying ${amount} from ${seller} for ${price}`);
+        });
+    });
+
+    // Cart button functionality
+    document.querySelectorAll('.cart-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const listing = button.closest('.listing-item');
+            const amount = listing.querySelector('.currency-amount').textContent;
+            const price = listing.querySelector('.price').textContent;
+            
+            // Here you would typically add to cart
+            console.log(`Added ${amount} to cart for ${price}`);
+            
+            // Visual feedback
+            button.textContent = 'Added to Cart';
+            button.style.background = '#00ff9d';
+            button.style.color = '#0a0a0a';
+            
+            setTimeout(() => {
+                button.textContent = 'Add to Cart';
+                button.style.background = 'transparent';
+                button.style.color = '#00ff9d';
+            }, 2000);
+        });
+    });
+
+    // Coin Rain Effect
+    function createCoin(x, y) {
+        const coin = document.createElement('div');
+        coin.className = 'coin';
+        coin.innerHTML = '💰';
+        coin.style.left = x + 'px';
+        coin.style.top = y + 'px';
+        document.body.appendChild(coin);
+
+        // Random rotation and movement
+        const rotation = Math.random() * 360;
+        const speed = 3; // Normal speed
+        const sway = Math.random() * 4 - 2; // Random sway for unpredictable movement
+
+        let posY = y;
+        let posX = x;
+        let opacity = 1;
+
+        function animate() {
+            posY += speed;
+            posX += sway;
+            opacity -= 0.01;
+
+            coin.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
+            coin.style.opacity = opacity;
+
+            if (opacity > 0) {
+                requestAnimationFrame(animate);
+            } else {
+                coin.remove();
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    // Add click event listener
+    document.addEventListener('click', (e) => {
+        // Create 3 coins for each click
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                createCoin(e.clientX, e.clientY);
+            }, i * 100);
+        }
+    });
+});

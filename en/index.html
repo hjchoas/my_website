@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Game - Game Currency Marketplace</title>
+    <link rel="stylesheet" href="../css/styles.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            text-align: left;
+        }
+        html[dir="ltr"] .section-title {
+            padding-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur">
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <a href="#home">Infinity Game</a>
+                    </div>
+                    <div class="menu-toggle">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <ul class="nav-links">
+                        <li class="language-selector">
+                            <a href="../index.html" data-lang="fa">فارسی</a>
+                            <span class="separator">|</span>
+                            <a href="#" class="active" data-lang="en">ENG</a>
+                        </li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#market">Market</a></li>
+                        <li><a href="#guide">Guide</a></li>
+                        <li><a href="#blog">News</a></li>
+                        <li><a href="#contact">Support</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="main-content">
+                    <!-- Hero Section -->
+                    <section id="home" class="hero">
+                        <div class="hero-container">
+                            <div class="section-container">
+                                <h1>Largest Game Currency Marketplace</h1>
+                                <p>Safe trading of in-game currency for popular games like World of Warcraft, New World, and Path of Exile</p>
+                                <a href="#market" class="cta-button">Start Trading</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Games Section -->
+                    <section id="games" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">Supported Games</h2>
+                        </div>
+                        <div class="service-grid">
+                            <div class="service-item">
+                                <img src="https://warcraft.wiki.gg/images/c/cc/Midnight_logo.png?b0310b" alt="World of Warcraft">
+                                <div class="service-content">
+                                    <h3>World of Warcraft</h3>
+                                    <p>Buy and sell WoW gold and items with the best prices and fastest delivery</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>⚡</i> Fast Delivery</span>
+                                        <span class="feature-tag"><i>🛡️</i> Secure Trade</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">Trade Now</a>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1063730/header.jpg" alt="New World">
+                                <div class="service-content">
+                                    <h3>New World</h3>
+                                    <p>Secure New World coin trading with 24/7 support</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>💬</i> 24/7 Support</span>
+                                        <span class="feature-tag"><i>💰</i> Best Prices</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">Trade Now</a>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/238960/header.jpg" alt="Path of Exile">
+                                <div class="service-content">
+                                    <h3>Path of Exile</h3>
+                                    <p>Buy and sell PoE currency and items at competitive prices</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>⚡</i> Instant Delivery</span>
+                                        <span class="feature-tag"><i>🛡️</i> Secure Trade</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">Trade Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Market Section -->
+                    <section id="market" class="market-container">
+                        <div class="section-header">
+                            <h2 class="section-title">Game Currency Market</h2>
+                        </div>
+                        <div class="market-tabs">
+                            <button class="tab-button active">World of Warcraft</button>
+                            <button class="tab-button">New World</button>
+                            <button class="tab-button">Path of Exile</button>
+                        </div>
+                        <div class="market-content">
+                            <div class="market-filters">
+                                <div class="filter-group">
+                                    <label>Server:</label>
+                                    <select class="server-select">
+                                        <option>All Servers</option>
+                                        <option>US Servers</option>
+                                        <option>EU Servers</option>
+                                        <option>Asia Servers</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Sort by:</label>
+                                    <select class="sort-select">
+                                        <option>Price: Low to High</option>
+                                        <option>Price: High to Low</option>
+                                        <option>Seller Rating</option>
+                                        <option>Delivery Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="market-listings">
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★★</span>
+                                            <span class="rating">4.9 (2,345)</span>
+                                        </div>
+                                        <div class="seller-name">PremiumSeller</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">100,000 Gold</div>
+                                        <div class="delivery-time">Delivery: 5-10 min</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">$50.00</div>
+                                        <div class="price-per-unit">$0.50/1K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">Buy Now</button>
+                                        <button class="cart-button">Add to Cart</button>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★☆</span>
+                                            <span class="rating">4.7 (1,890)</span>
+                                        </div>
+                                        <div class="seller-name">FastDelivery</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">500,000 Gold</div>
+                                        <div class="delivery-time">Delivery: 10-15 min</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">$230.00</div>
+                                        <div class="price-per-unit">$0.46/1K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">Buy Now</button>
+                                        <button class="cart-button">Add to Cart</button>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★★</span>
+                                            <span class="rating">4.9 (3,120)</span>
+                                        </div>
+                                        <div class="seller-name">TrustedTrader</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">1,000,000 Gold</div>
+                                        <div class="delivery-time">Delivery: 15-20 min</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">$450.00</div>
+                                        <div class="price-per-unit">$0.45/1K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">Buy Now</button>
+                                        <button class="cart-button">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="market-features">
+                            <div class="feature-item">
+                                <i class="feature-icon">🛡️</i>
+                                <h4>Secure Trading</h4>
+                                <p>100% secure transactions with buyer protection</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="feature-icon">⚡</i>
+                                <h4>Fast Delivery</h4>
+                                <p>Instant delivery within minutes</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="feature-icon">💬</i>
+                                <h4>24/7 Support</h4>
+                                <p>Live chat support available anytime</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Guide Section -->
+                    <section id="guide" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">Trading Guide</h2>
+                        </div>
+                        <div class="grid-container">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <h3>Select Game & Amount</h3>
+                                <p>Choose your game and the amount of currency you need</p>
+                            </div>
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <h3>Secure Payment</h3>
+                                <p>Complete payment through secure payment gateways</p>
+                            </div>
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <h3>Fast Delivery</h3>
+                                <p>Currency will be delivered to your account within 15 minutes</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Blog Section -->
+                    <section id="blog" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">News & Articles</h2>
+                        </div>
+                        <div class="grid-container">
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="Blog Article">
+                                    <div class="blog-date">June 5, 2024</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>Best Ways to Earn Gold in World of Warcraft</h3>
+                                    <p>Complete guide to earning gold in WoW and converting it to real income</p>
+                                    <a href="#" class="read-more">Read More <i class="arrow-right">→</i></a>
+                                </div>
+                            </div>
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="Blog Article">
+                                    <div class="blog-date">May 23, 2024</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>Trading Guide for New World</h3>
+                                    <p>Important tips for buying and selling coins in New World</p>
+                                    <a href="#" class="read-more">Read More <i class="arrow-right">→</i></a>
+                                </div>
+                            </div>
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="Blog Article">
+                                    <div class="blog-date">May 10, 2024</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>Currency Trading Guide for Path of Exile</h3>
+                                    <p>How to profit from currency trading in PoE</p>
+                                    <a href="#" class="read-more">Read More <i class="arrow-right">→</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Section -->
+                    <section id="contact" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">24/7 Support</h2>
+                        </div>
+                        <p>Our support team is ready to assist you with any questions or issues regarding trading</p>
+                        <div class="flex-container">
+                            <a href="#" class="contact-button">
+                                <span class="contact-icon">💬</span>
+                                Live Chat
+                            </a>
+                            <a href="#" class="contact-button">
+                                <span class="contact-icon">📱</span>
+                                Telegram
+                            </a>
+                            <a href="mailto:support@gamecoin.com" class="contact-button">
+                                <span class="contact-icon">✉️</span>
+                                Email
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-container">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <a href="#home">Infinity Game</a>
+                        <p class="footer-tagline">Largest Game Currency Marketplace</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#games">Games</a></li>
+                                <li><a href="#market">Market</a></li>
+                                <li><a href="#guide">Guide</a></li>
+                                <li><a href="#contact">Support</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Games</h4>
+                            <ul>
+                                <li><a href="#games">World of Warcraft</a></li>
+                                <li><a href="#games">New World</a></li>
+                                <li><a href="#games">Path of Exile</a></li>
+                                <li><a href="#games">Other Games</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Contact Us</h4>
+                            <ul class="contact-info">
+                                <li><i class="icon">💬</i> 24/7 Support</li>
+                                <li><i class="icon">📱</i> @GameCoin_Support</li>
+                                <li><i class="icon">✉️</i> support@gamecoin.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Infinity Game. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Telegram">
+                            <span class="social-icon">✈️</span>
+                        </a>
+                        <a href="#" class="social-link" title="Discord">
+                            <span class="social-icon">🎮</span>
+                        </a>
+                        <a href="#" class="social-link" title="Instagram">
+                            <span class="social-icon">📸</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/script.js?v=2"></script>
+</body>
+</html> 

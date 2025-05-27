@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Game - بازار ارز بازی‌ها</title>
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur">
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <a href="#home">Infinity Game</a>
+                    </div>
+                    <div class="menu-toggle">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <ul class="nav-links">
+                        <li class="language-selector">
+                            <a href="#" class="active" data-lang="fa">فارسی</a>
+                            <span class="separator">|</span>
+                            <a href="en/index.html" data-lang="en">ENG</a>
+                        </li>
+                        <li><a href="#home">خانه</a></li>
+                        <li><a href="#games">بازی‌ها</a></li>
+                        <li><a href="#market">بازار</a></li>
+                        <li><a href="#guide">راهنما</a></li>
+                        <li><a href="#blog">اخبار</a></li>
+                        <li><a href="#contact">پشتیبانی</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="main-content">
+                    <!-- Hero Section -->
+                    <section id="home" class="hero">
+                        <div class="hero-container">
+                            <div class="section-container">
+                                <h1>بزرگترین بازار ارز بازی‌ها</h1>
+                                <p>خرید و فروش امن ارز در بازی‌های محبوب مانند World of Warcraft، New World و Path of Exile</p>
+                                <a href="#market" class="cta-button">شروع معامله</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Games Section -->
+                    <section id="games" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">بازی‌های پشتیبانی شده</h2>
+                        </div>
+                        <div class="service-grid">
+                            <div class="service-item">
+                                <img src="https://warcraft.wiki.gg/images/c/cc/Midnight_logo.png?b0310b" alt="World of Warcraft">
+                                <div class="service-content">
+                                    <h3>World of Warcraft</h3>
+                                    <p>خرید و فروش طلا و آیتم‌های WoW با بهترین قیمت‌ها و سریع‌ترین تحویل</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>⚡</i> تحویل سریع</span>
+                                        <span class="feature-tag"><i>🛡️</i> معامله امن</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">معامله</a>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1063730/header.jpg" alt="New World">
+                                <div class="service-content">
+                                    <h3>New World</h3>
+                                    <p>معاملات امن کوین‌های New World با پشتیبانی ۲۴/۷</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>💬</i> پشتیبانی ۲۴/۷</span>
+                                        <span class="feature-tag"><i>💵</i> بهترین قیمت‌ها</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">معامله</a>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://cdn.akamai.steamstatic.com/steam/apps/238960/header.jpg" alt="Path of Exile">
+                                <div class="service-content">
+                                    <h3>Path of Exile</h3>
+                                    <p>خرید و فروش ارز و آیتم‌های PoE با قیمت‌های رقابتی</p>
+                                    <div class="service-features">
+                                        <span class="feature-tag"><i>⚡</i> تحویل فوری</span>
+                                        <span class="feature-tag"><i>🛡️</i> معامله امن</span>
+                                    </div>
+                                    <a href="#market" class="service-cta">معامله</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Market Section -->
+                    <section id="market" class="market-container">
+                        <div class="section-header">
+                            <h2 class="section-title">بازار ارز بازی‌ها</h2>
+                        </div>
+                        <div class="market-tabs">
+                            <button class="tab-button active">World of Warcraft</button>
+                            <button class="tab-button">New World</button>
+                            <button class="tab-button">Path of Exile</button>
+                        </div>
+                        <div class="market-content">
+                            <div class="market-filters">
+                                <div class="filter-group">
+                                    <label>سرور:</label>
+                                    <select class="server-select">
+                                        <option>همه سرورها</option>
+                                        <option>سرورهای آمریکا</option>
+                                        <option>سرورهای اروپا</option>
+                                        <option>سرورهای آسیا</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label>مرتب‌سازی:</label>
+                                    <select class="sort-select">
+                                        <option>قیمت: کم به زیاد</option>
+                                        <option>قیمت: زیاد به کم</option>
+                                        <option>امتیاز فروشنده</option>
+                                        <option>زمان تحویل</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="market-listings">
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★★</span>
+                                            <span class="rating">۴.۹ (۲,۳۴۵)</span>
+                                        </div>
+                                        <div class="seller-name">PremiumSeller</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">۱۰۰,۰۰۰ طلا</div>
+                                        <div class="delivery-time">تحویل: ۵-۱۰ دقیقه</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">۵۰,۰۰۰ تومان</div>
+                                        <div class="price-per-unit">۵۰۰ تومان/۱K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">خرید</button>
+                                        <button class="cart-button">افزودن به سبد</button>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★☆</span>
+                                            <span class="rating">۴.۷ (۱,۸۹۰)</span>
+                                        </div>
+                                        <div class="seller-name">FastDelivery</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">۵۰۰,۰۰۰ طلا</div>
+                                        <div class="delivery-time">تحویل: ۱۰-۱۵ دقیقه</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">۲۳۰,۰۰۰ تومان</div>
+                                        <div class="price-per-unit">۴۶۰ تومان/۱K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">خرید</button>
+                                        <button class="cart-button">افزودن به سبد</button>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <div class="seller-info">
+                                        <div class="seller-rating">
+                                            <span class="stars">★★★★★</span>
+                                            <span class="rating">۴.۹ (۳,۱۲۰)</span>
+                                        </div>
+                                        <div class="seller-name">TrustedTrader</div>
+                                    </div>
+                                    <div class="listing-details">
+                                        <div class="currency-amount">۱,۰۰۰,۰۰۰ طلا</div>
+                                        <div class="delivery-time">تحویل: ۱۵-۲۰ دقیقه</div>
+                                    </div>
+                                    <div class="listing-price">
+                                        <div class="price">۴۵۰,۰۰۰ تومان</div>
+                                        <div class="price-per-unit">۴۵۰ تومان/۱K</div>
+                                    </div>
+                                    <div class="listing-actions">
+                                        <button class="buy-button">خرید</button>
+                                        <button class="cart-button">افزودن به سبد</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="market-features">
+                            <div class="feature-item">
+                                <i class="feature-icon">🛡️</i>
+                                <h4>معامله امن</h4>
+                                <p>معاملات ۱۰۰٪ امن با پشتیبانی خریدار</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="feature-icon">⚡</i>
+                                <h4>تحویل سریع</h4>
+                                <p>تحویل فوری در چند دقیقه</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="feature-icon">💬</i>
+                                <h4>پشتیبانی ۲۴/۷</h4>
+                                <p>پشتیبانی آنلاین در هر زمان</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Guide Section -->
+                    <section id="guide" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">راهنمای معامله</h2>
+                        </div>
+                        <div class="grid-container">
+                            <div class="guide-step">
+                                <div class="step-number">۱</div>
+                                <h3>انتخاب بازی و مقدار</h3>
+                                <p>بازی مورد نظر و مقدار ارز مورد نیاز خود را انتخاب کنید</p>
+                            </div>
+                            <div class="guide-step">
+                                <div class="step-number">۲</div>
+                                <h3>پرداخت امن</h3>
+                                <p>پرداخت را از طریق درگاه‌های امن انجام دهید</p>
+                            </div>
+                            <div class="guide-step">
+                                <div class="step-number">۳</div>
+                                <h3>تحویل سریع</h3>
+                                <p>ارز خریداری شده در کمتر از ۱۵ دقیقه به حساب شما واریز می‌شود</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Blog Section -->
+                    <section id="blog" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">اخبار و مقالات</h2>
+                        </div>
+                        <div class="grid-container">
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="مقاله وبلاگ">
+                                    <div class="blog-date">۱۵ خرداد ۱۴۰۳</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>بهترین روش‌های کسب درآمد در World of Warcraft</h3>
+                                    <p>راهنمای جامع برای کسب طلا در WoW و تبدیل آن به درآمد واقعی</p>
+                                    <a href="#" class="read-more">ادامه مطلب <i class="arrow-left">←</i></a>
+                                </div>
+                            </div>
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="مقاله وبلاگ">
+                                    <div class="blog-date">۲ خرداد ۱۴۰۳</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>راهنمای معامله در New World</h3>
+                                    <p>نکات مهم برای خرید و فروش کوین در New World</p>
+                                    <a href="#" class="read-more">ادامه مطلب <i class="arrow-left">←</i></a>
+                                </div>
+                            </div>
+                            <div class="blog-item">
+                                <div class="blog-image">
+                                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="مقاله وبلاگ">
+                                    <div class="blog-date">۲۰ اردیبهشت ۱۴۰۳</div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3>راهنمای معامله ارز در Path of Exile</h3>
+                                    <p>چگونه می‌توانید از معاملات ارز در PoE سود کسب کنید</p>
+                                    <a href="#" class="read-more">ادامه مطلب <i class="arrow-left">←</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Section -->
+                    <section id="contact" class="section-container">
+                        <div class="section-header">
+                            <h2 class="section-title">پشتیبانی ۲۴/۷</h2>
+                        </div>
+                        <p>تیم پشتیبانی ما آماده پاسخگویی به سوالات و مشکلات شما در زمینه معاملات است</p>
+                        <div class="flex-container">
+                            <a href="#" class="contact-button">
+                                <span class="contact-icon">💬</span>
+                                چت آنلاین
+                            </a>
+                            <a href="#" class="contact-button">
+                                <span class="contact-icon">📱</span>
+                                تلگرام
+                            </a>
+                            <a href="mailto:support@gamecoin.com" class="contact-button">
+                                <span class="contact-icon">✉️</span>
+                                ایمیل
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-container">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <a href="#home">Infinity Game</a>
+                        <p class="footer-tagline">بزرگترین بازار ارز بازی‌ها</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>دسترسی سریع</h4>
+                            <ul>
+                                <li><a href="#home">خانه</a></li>
+                                <li><a href="#games">بازی‌ها</a></li>
+                                <li><a href="#market">بازار</a></li>
+                                <li><a href="#guide">راهنما</a></li>
+                                <li><a href="#contact">پشتیبانی</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>بازی‌ها</h4>
+                            <ul>
+                                <li><a href="#games">World of Warcraft</a></li>
+                                <li><a href="#games">New World</a></li>
+                                <li><a href="#games">Path of Exile</a></li>
+                                <li><a href="#games">بازی‌های دیگر</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>تماس با ما</h4>
+                            <ul class="contact-info">
+                                <li><i class="icon">💬</i> پشتیبانی ۲۴/۷</li>
+                                <li><i class="icon">📱</i> @GameCoin_Support</li>
+                                <li><i class="icon">✉️</i> support@gamecoin.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; ۱۴۰۳ Infinity Game. تمامی حقوق محفوظ است.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="تلگرام">
+                            <span class="social-icon">✈️</span>
+                        </a>
+                        <a href="#" class="social-link" title="دیسکورد">
+                            <span class="social-icon">🎮</span>
+                        </a>
+                        <a href="#" class="social-link" title="اینستاگرام">
+                            <span class="social-icon">📸</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/script.js?v=2"></script>
+</body>
+</html>

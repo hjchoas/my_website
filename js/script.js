@@ -375,4 +375,153 @@ document.addEventListener('DOMContentLoaded', function() {
             }, i * 100);
         }
     });
+
+    // DOM Elements
+    const fabButton = document.getElementById('fabButton');
+    const fabMenu = document.querySelector('.fab-menu');
+    const scrollProgressBar = document.querySelector('.scroll-progress-bar');
+    const navbar = document.querySelector('.navbar');
+
+    // FAB Menu Toggle
+    fabButton.addEventListener('click', () => {
+        fabMenu.classList.toggle('active');
+        fabButton.classList.toggle('active');
+    });
+
+    // Close FAB menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!fabMenu.contains(e.target)) {
+            fabMenu.classList.remove('active');
+            fabButton.classList.remove('active');
+        }
+    });
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        scrollProgressBar.style.width = `${scrolled}%`;
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Add animation to elements when they come into view
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.animate__animated');
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            const isVisible = (elementTop < window.innerHeight) && (elementBottom >= 0);
+            
+            if (isVisible) {
+                element.style.visibility = 'visible';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+
+    // Form validation
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('پیام شما با موفقیت ارسال شد!');
+            contactForm.reset();
+        });
+    }
+
+    // Market filters functionality
+    const marketFilters = document.querySelector('.market-filters');
+    if (marketFilters) {
+        const searchInput = marketFilters.querySelector('input[type="text"]');
+        const sortSelect = marketFilters.querySelector('select:first-of-type');
+        const gameSelect = marketFilters.querySelector('select:last-of-type');
+        const filterButton = marketFilters.querySelector('.btn-outline-primary');
+        const resetButton = marketFilters.querySelector('.btn-primary');
+
+        // Add event listeners for filters
+        [searchInput, sortSelect, gameSelect].forEach(element => {
+            element.addEventListener('change', () => {
+                // Add your filter logic here
+                console.log('Filters updated');
+            });
+        });
+
+        // Reset filters
+        resetButton.addEventListener('click', () => {
+            searchInput.value = '';
+            sortSelect.selectedIndex = 0;
+            gameSelect.selectedIndex = 0;
+            // Add your reset logic here
+            console.log('Filters reset');
+        });
+    }
+
+    // Add hover effect to game cards
+    const gameCards = document.querySelectorAll('.game-card');
+    gameCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Add click effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Discord Widget
+    const discordWidget = document.querySelector('.discord-widget');
+    const discordToggle = document.querySelector('.discord-widget-toggle');
+
+    if (discordWidget && discordToggle) {
+        // Toggle widget visibility
+        discordToggle.addEventListener('click', () => {
+            discordWidget.classList.toggle('active');
+        });
+
+        // Close widget when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!discordWidget.contains(e.target)) {
+                discordWidget.classList.remove('active');
+            }
+        });
+    }
 });

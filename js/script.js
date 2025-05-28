@@ -359,32 +359,11 @@ document.addEventListener('DOMContentLoaded', function() {
         coin.style.left = x + 'px';
         coin.style.top = y + 'px';
         document.body.appendChild(coin);
-
-        // Random rotation and movement
-        const rotation = Math.random() * 360;
-        const speed = 3; // Normal speed
-        const sway = Math.random() * 4 - 2; // Random sway for unpredictable movement
-
-        let posY = y;
-        let posX = x;
-        let opacity = 1;
-
-        function animate() {
-            posY += speed;
-            posX += sway;
-            opacity -= 0.01;
-
-            coin.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
-            coin.style.opacity = opacity;
-
-            if (opacity > 0) {
-                requestAnimationFrame(animate);
-            } else {
-                coin.remove();
-            }
-        }
-
-        requestAnimationFrame(animate);
+        
+        // Remove the coin after animation ends
+        coin.addEventListener('animationend', () => {
+            coin.remove();
+        });
     }
 
     // Add click event listener

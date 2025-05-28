@@ -239,54 +239,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const listingItems = document.querySelectorAll('.listing-item');
 
     // Tab switching
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-            // Here you would typically load different game data
-            // For now, we'll just update the currency amounts
-            updateListings(button.textContent);
+    if (tabButtons && tabButtons.length) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                updateListings(button.textContent);
+            });
         });
-    });
+    }
 
     // Server filtering
-    serverSelect.addEventListener('change', () => {
-        // Here you would typically filter listings by server
-        console.log('Server selected:', serverSelect.value);
-    });
+    if (serverSelect) {
+        serverSelect.addEventListener('change', () => {
+            console.log('Server selected:', serverSelect.value);
+        });
+    }
 
     // Sorting
-    sortSelect.addEventListener('change', () => {
-        const listings = Array.from(listingItems);
-        const sortBy = sortSelect.value;
-
-        listings.sort((a, b) => {
-            const priceA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
-            const priceB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
-            const ratingA = parseFloat(a.querySelector('.rating').textContent.split(' ')[0]);
-            const ratingB = parseFloat(b.querySelector('.rating').textContent.split(' ')[0]);
-            const deliveryA = parseInt(a.querySelector('.delivery-time').textContent.split('-')[0]);
-            const deliveryB = parseInt(b.querySelector('.delivery-time').textContent.split('-')[0]);
-
-            switch(sortBy) {
-                case 'Price: Low to High':
-                    return priceA - priceB;
-                case 'Price: High to Low':
-                    return priceB - priceA;
-                case 'Seller Rating':
-                    return ratingB - ratingA;
-                case 'Delivery Time':
-                    return deliveryA - deliveryB;
-                default:
-                    return 0;
-            }
+    if (sortSelect) {
+        sortSelect.addEventListener('change', () => {
+            const listings = Array.from(listingItems || []);
+            const sortBy = sortSelect.value;
+            listings.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
+                const priceB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
+                const ratingA = parseFloat(a.querySelector('.rating').textContent.split(' ')[0]);
+                const ratingB = parseFloat(b.querySelector('.rating').textContent.split(' ')[0]);
+                const deliveryA = parseInt(a.querySelector('.delivery-time').textContent.split('-')[0]);
+                const deliveryB = parseInt(b.querySelector('.delivery-time').textContent.split('-')[0]);
+                switch(sortBy) {
+                    case 'Price: Low to High': return priceA - priceB;
+                    case 'Price: High to Low': return priceB - priceA;
+                    case 'Seller Rating': return ratingB - ratingA;
+                    case 'Delivery Time': return deliveryA - deliveryB;
+                    default: return 0;
+                }
+            });
+            const marketListings = document.querySelector('.market-listings');
+            listings.forEach(listing => marketListings && marketListings.appendChild(listing));
         });
-
-        const marketListings = document.querySelector('.market-listings');
-        listings.forEach(listing => marketListings.appendChild(listing));
-    });
+    }
 
     // Update listings based on selected game
     function updateListings(game) {
@@ -316,40 +309,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Buy button functionality
-    document.querySelectorAll('.buy-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const listing = button.closest('.listing-item');
-            const amount = listing.querySelector('.currency-amount').textContent;
-            const price = listing.querySelector('.price').textContent;
-            const seller = listing.querySelector('.seller-name').textContent;
-            
-            // Here you would typically open a checkout modal
-            console.log(`Buying ${amount} from ${seller} for ${price}`);
+    if (document.querySelectorAll('.buy-button').length) {
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const listing = button.closest('.listing-item');
+                const amount = listing.querySelector('.currency-amount').textContent;
+                const price = listing.querySelector('.price').textContent;
+                const seller = listing.querySelector('.seller-name').textContent;
+                console.log(`Buying ${amount} from ${seller} for ${price}`);
+            });
         });
-    });
+    }
 
     // Cart button functionality
-    document.querySelectorAll('.cart-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const listing = button.closest('.listing-item');
-            const amount = listing.querySelector('.currency-amount').textContent;
-            const price = listing.querySelector('.price').textContent;
-            
-            // Here you would typically add to cart
-            console.log(`Added ${amount} to cart for ${price}`);
-            
-            // Visual feedback
-            button.textContent = 'Added to Cart';
-            button.style.background = '#00ff9d';
-            button.style.color = '#0a0a0a';
-            
-            setTimeout(() => {
-                button.textContent = 'Add to Cart';
-                button.style.background = 'transparent';
-                button.style.color = '#00ff9d';
-            }, 2000);
+    if (document.querySelectorAll('.cart-button').length) {
+        document.querySelectorAll('.cart-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const listing = button.closest('.listing-item');
+                const amount = listing.querySelector('.currency-amount').textContent;
+                const price = listing.querySelector('.price').textContent;
+                console.log(`Added ${amount} to cart for ${price}`);
+                button.textContent = 'Added to Cart';
+                button.style.background = '#00ff9d';
+                button.style.color = '#0a0a0a';
+                setTimeout(() => {
+                    button.textContent = 'Add to Cart';
+                    button.style.background = 'transparent';
+                    button.style.color = '#00ff9d';
+                }, 2000);
+            });
         });
-    });
+    }
 
     // Coin Rain Effect
     function createCoin(x, y) {
@@ -383,34 +373,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
 
     // FAB Menu Toggle
-    fabButton.addEventListener('click', () => {
-        fabMenu.classList.toggle('active');
-        fabButton.classList.toggle('active');
-    });
-
-    // Close FAB menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!fabMenu.contains(e.target)) {
-            fabMenu.classList.remove('active');
-            fabButton.classList.remove('active');
-        }
-    });
+    if (fabButton && fabMenu) {
+        fabButton.addEventListener('click', () => {
+            fabMenu.classList.toggle('active');
+            fabButton.classList.toggle('active');
+        });
+        // Close FAB menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!fabMenu.contains(e.target)) {
+                fabMenu.classList.remove('active');
+                fabButton.classList.remove('active');
+            }
+        });
+    }
 
     // Scroll Progress Bar
-    window.addEventListener('scroll', () => {
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        scrollProgressBar.style.width = `${scrolled}%`;
-    });
+    if (scrollProgressBar) {
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgressBar.style.width = `${scrolled}%`;
+        });
+    }
 
     // Navbar Scroll Effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Initialize tooltips
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));

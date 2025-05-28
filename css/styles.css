@@ -672,18 +672,24 @@ html[dir='rtl'] .me-auto {
 
 .card-img-wrapper {
     position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 12px;
 }
 
 .card-img-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: transparent;
+    transition: transform 0.3s;
 }
 
 .game-card:hover .card-img-wrapper img {
@@ -1392,28 +1398,32 @@ html[dir='rtl'] .me-auto {
 }
 
 .discord-widget-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 56px;
+    height: 56px;
     background: #5865F2;
     border: none;
-    cursor: pointer;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
-    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s;
+    padding: 0;
+    overflow: hidden;
 }
 
 .discord-widget-toggle .discord-icon {
-    width: 32px;
-    height: 32px;
-    transition: all 0.3s ease;
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s;
 }
 
-.discord-widget-toggle:hover {
+.discord-widget-toggle:hover .discord-icon {
     transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(88, 101, 242, 0.6);
 }
 
 .discord-widget.active .discord-widget-toggle {
@@ -1446,5 +1456,30 @@ html[dir='rtl'] .me-auto {
     .discord-widget iframe {
         width: 280px;
         height: 380px;
+    }
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 3rem auto 4rem auto;
+    padding: 3rem 2rem 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,255,157,0.08);
+}
+
+.grid-container {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+    .section-container {
+        padding: 2rem 1rem;
+    }
+    .grid-container {
+        gap: 1.5rem;
     }
 }

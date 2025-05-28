@@ -47,72 +47,273 @@ body {
 
 /* Navbar Enhancements */
 .navbar {
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
     transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 10, 0.98);
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-brand {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    color: #fff !important;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--neon-primary) !important;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-shadow: var(--neon-glow-primary);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .navbar-logo {
     height: 40px;
     width: auto;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: rotate(5deg);
+}
+
+.navbar-nav {
+    gap: 0.5rem;
 }
 
 .nav-link {
-    color: var(--text-color) !important;
-    transition: all 0.3s;
-    position: relative;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
     padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-link::after {
+.nav-link::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--neon-primary);
+    background: var(--primary-color);
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
 
-.nav-link:hover::after {
-    width: 100%;
-}
-
 .nav-link:hover {
-    color: var(--neon-primary) !important;
-    background: rgba(0, 255, 157, 0.1);
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
-.navbar-toggler {
-    border-color: var(--neon-primary);
+.nav-link:hover::before {
+    width: 80%;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active::before {
+    width: 80%;
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
     padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.navbar-toggler:focus {
-    box-shadow: var(--neon-glow-primary);
+.language-selector .nav-link {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.9rem;
+    border-radius: 4px;
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 255, 157, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.language-selector .nav-link.active {
+    background: var(--primary-color);
+    color: #fff !important;
 }
+
+.separator {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Navbar Collapse Styles */
+.navbar-collapse {
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transform-origin: top;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-collapse.show {
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Navbar Styles */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0.5rem;
+        z-index: 1000;
+    }
+
+    .navbar-nav {
+        gap: 0.25rem;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+    }
+
+    .nav-link:hover {
+        transform: translateX(5px);
+    }
+
+    .language-selector {
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+
+    .navbar-toggler {
+        border: none;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+        background-image: none;
+        position: relative;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before {
+        transform: translateY(-8px);
+    }
+
+    .navbar-toggler-icon::after {
+        transform: translateY(8px);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+        background: transparent;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+        transform: rotate(45deg);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+        transform: rotate(-45deg);
+    }
+}
+
+/* Buy Currency Button */
+.nav-link.btn-primary {
+    background: var(--primary-color);
+    color: #fff !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+}
+
+.nav-link.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+    background: var(--primary-color-dark);
+}
+
+.nav-link.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Navbar Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-nav .nav-item {
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+}
+
+.navbar-nav .nav-item:nth-child(1) { animation-delay: 0.1s; }
+.navbar-nav .nav-item:nth-child(2) { animation-delay: 0.2s; }
+.navbar-nav .nav-item:nth-child(3) { animation-delay: 0.3s; }
+.navbar-nav .nav-item:nth-child(4) { animation-delay: 0.4s; }
+.navbar-nav .nav-item:nth-child(5) { animation-delay: 0.5s; }
+.navbar-nav .nav-item:nth-child(6) { animation-delay: 0.6s; }
+.navbar-nav .nav-item:nth-child(7) { animation-delay: 0.7s; }
 
 /* Floating Action Button Menu */
 .fab-menu {

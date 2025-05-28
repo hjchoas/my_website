@@ -507,13 +507,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Discord Widget
+    // Discord Widget Toggle
     const discordWidget = document.querySelector('.discord-widget');
     const discordToggle = document.querySelector('.discord-widget-toggle');
 
     if (discordWidget && discordToggle) {
-        // Toggle widget visibility
-        discordToggle.addEventListener('click', () => {
+        discordToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling up
             discordWidget.classList.toggle('active');
         });
 

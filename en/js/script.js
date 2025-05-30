@@ -40,12 +40,50 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Coin Drop Effect
+function createCoin(x, y) {
+    const coin = document.createElement('div');
+    coin.className = 'coin';
+    coin.innerHTML = '💰';
+    coin.style.position = 'fixed';
+    coin.style.left = x + 'px';
+    coin.style.top = y + 'px';
+    coin.style.pointerEvents = 'none';
+    document.body.appendChild(coin);
+
+    // Remove the coin after animation ends
+    coin.addEventListener('animationend', () => {
+        coin.remove();
+    });
+}
+
+// Listen globally for pointerdown (mouse/touch only)
+document.addEventListener('pointerdown', function (e) {
+    // Only trigger for left mouse button or touch
+    if (e.pointerType !== 'mouse' && e.pointerType !== 'touch') return;
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+
+    // Only on interactive elements
+    const interactive = e.target.closest('.btn, .game-card, .fab-option, .listing-card, .contact-card, .blog-card');
+    if (!interactive) return;
+
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+            createCoin(e.clientX, e.clientY);
+        }, i * 100);
+    }
+});
+
 // Smooth Scrolling for Navigation Links
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return; // Don't scroll if href is just "#"
+        
         const targetSection = document.querySelector(targetId);
+        if (!targetSection) return; // Don't scroll if target doesn't exist
+        
         const navbarHeight = navbar.offsetHeight;
         const targetPosition = targetSection.offsetTop - navbarHeight;
 
@@ -56,7 +94,7 @@ navLinks.forEach(link => {
 
         // Update active link
         navLinks.forEach(navLink => navLink.classList.remove('active'));
-        link.classList.add('active');
+        this.classList.add('active');
     });
 });
 
